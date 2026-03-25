@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+:root {
+	--color-bg: #0f1117;
+	--color-surface: #1a1d27;
+	--color-surface-hover: #232733;
+	--color-border: #2a2e3a;
+	--color-text: #e8eaf0;
+	--color-text-muted: #8b8fa3;
+	--color-accent: #4f8cff;
+	--color-accent-hover: #6ba0ff;
+	--color-success: #34d399;
+	--color-warning: #fbbf24;
+	--color-danger: #f87171;
+	--color-energy: #fbbf24;
+	--color-focus: #818cf8;
+	--color-sleep: #60a5fa;
+
+	font-family:
+		"SF Pro Display", "SF Pro Text", system-ui, -apple-system, sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
