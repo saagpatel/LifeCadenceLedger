@@ -5,11 +5,11 @@ A local-first macOS desktop app for tracking daily energy, focus, habits, and sl
 
 ## Tech Stack
 - **Tauri**: 2.0 — macOS desktop shell, system notifications, SQLite plugin
-- **React**: 18 — UI framework
+- **React**: 19 — UI framework
 - **TypeScript**: 5.x (strict mode)
 - **SQLite**: via `@tauri-apps/plugin-sql` — local-first persistence
 - **Recharts**: 2.x — trend and correlation charts
-- **Tailwind CSS**: 3.x — styling
+- **Tailwind CSS**: 4.x — styling
 
 ## Development Conventions
 - TypeScript strict mode — no `any` types
@@ -19,7 +19,7 @@ A local-first macOS desktop app for tracking daily energy, focus, habits, and sl
 - All data transforms must have unit tests before committing
 
 ## Current Phase
-**Phase 0: Foundation**
+**v1.0 — All phases complete** (Phase 0: Foundation, Phase 1: Pattern Dashboard, Phase 2: Polish & CSV Import)
 See IMPLEMENTATION-ROADMAP.md for full phase details and acceptance criteria.
 
 ## Key Decisions
@@ -48,17 +48,17 @@ A local-first macOS desktop app for tracking daily energy, focus, habits, and sl
 
 ## Current State
 
-**Phase 0: Foundation**
+**v1.0 — All phases complete** (Phase 0: Foundation, Phase 1: Pattern Dashboard, Phase 2: Polish & CSV Import)
 See IMPLEMENTATION-ROADMAP.md for full phase details and acceptance criteria.
 
 ## Stack
 
 - **Tauri**: 2.0 — macOS desktop shell, system notifications, SQLite plugin
-- **React**: 18 — UI framework
+- **React**: 19 — UI framework
 - **TypeScript**: 5.x (strict mode)
 - **SQLite**: via `@tauri-apps/plugin-sql` — local-first persistence
 - **Recharts**: 2.x — trend and correlation charts
-- **Tailwind CSS**: 3.x — styling
+- **Tailwind CSS**: 4.x — styling
 
 ## How To Run
 
