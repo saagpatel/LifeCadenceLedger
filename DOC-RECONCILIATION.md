@@ -11,67 +11,63 @@ reading source files, manifests, and git history directly.
 
 ### 1. What it is
 
-**Status: drifted → fixed**
+**Status: consistent**
 **Evidence basis: verified-by-reading-code**
 
-- `README.md` described the project in past-tense planning language ("Project structure is being
-  established") and listed features as "Planned Features" when all are shipped.
-- `src/App.tsx`, `src/components/`, `src/hooks/`, `src/lib/` confirm a fully implemented app:
-  check-in form, pattern dashboard (5 chart panels), habit manager, settings panel, onboarding
-  wizard, CSV import, macOS notification scheduling.
-- **README.md changed:**
-  - Status badge: `early_development` → `v1.0`
-  - Removed "Project structure is being established." — replaced with an accurate one-line
-    description of what the app captures and how (daily check-in → SQLite → pattern charts).
-  - Section heading `Planned Features` → `Features`; bullet list rewritten to reflect what is
-    actually implemented (daily check-in form, habit manager, 5-panel pattern dashboard, macOS
-    notification, CSV import, local-first storage).
+`README.md` description and `CLAUDE.md` preamble both correctly describe a local-first macOS
+desktop app for tracking daily energy, focus, habits, and sleep. Entry point: `src/App.tsx`, which
+mounts an Onboarding wizard or a 4-tab shell (Check-in / Patterns / History / Settings).
+
+No changes made.
 
 ---
 
 ### 2. Current state
 
-**Status: drifted → fixed**
+**Status: consistent**
 **Evidence basis: verified-by-reading-code**
 
-Both `CLAUDE.md` sections ("## Current Phase" in the main block and "## Current State" in the
-portfolio-context block) claimed `Phase 0: Foundation`. Code shows all three roadmap phases are
-complete:
+`README.md` badge: `status-v1.0-green` — consistent with `package.json` version `1.0.0`.
+`CLAUDE.md` status: "v1.0 — All phases complete (Phase 0: Foundation, Phase 1: Pattern Dashboard,
+Phase 2: Polish & CSV Import)."
 
-- Phase 0 (Foundation): `src/lib/db.ts`, `src/hooks/use-habits.ts`, `src/hooks/use-checkins.ts`,
+All three phases confirmed by reading code:
+- Phase 0: `src/lib/db.ts`, `src/hooks/use-habits.ts`, `src/hooks/use-checkins.ts`,
   `src/components/HabitManager.tsx`, `src/components/CheckInForm.tsx`,
-  `src/components/CheckInHistory.tsx`, `src/lib/notifications.ts` — all present and substantive.
-- Phase 1 (Pattern Dashboard): `src/components/PatternDashboard.tsx`,
-  `src/components/charts/EnergyFocusTrend.tsx`, `src/components/charts/HabitStreakGrid.tsx`,
-  `src/components/charts/SleepEnergyScatter.tsx`, `src/components/charts/DayOfWeekBar.tsx`,
-  `src/components/WeeklySummary.tsx`, `src/hooks/use-patterns.ts` — all present.
-- Phase 2 (Polish & CSV Import): `src/components/Onboarding.tsx`, `src/lib/csv-import.ts`
-  (using PapaParse), `settings` table in `database/migrations/001_initial.sql` — all present.
-- `tauri.conf.json` version: `1.0.0`. `package.json` version: `1.0.0`.
-- **CLAUDE.md changed (both occurrences):**
-  - Before: `**Phase 0: Foundation**`
-  - After: `**v1.0 — All phases complete** (Phase 0: Foundation, Phase 1: Pattern Dashboard,
-    Phase 2: Polish & CSV Import)`
+  `src/components/CheckInHistory.tsx`, `src/lib/notifications.ts` — all present.
+- Phase 1: `src/components/PatternDashboard.tsx`, all 4 chart components under
+  `src/components/charts/`, `src/components/WeeklySummary.tsx`,
+  `src/hooks/use-patterns.ts` — all present.
+- Phase 2: `src/components/Onboarding.tsx`, `src/lib/csv-import.ts` (PapaParse),
+  `settings` table in `database/migrations/001_initial.sql` — all present.
 
-Tests: 4 test files exist — `src/lib/db.test.ts`, `src/lib/dates.test.ts`,
+4 test files present: `src/lib/db.test.ts`, `src/lib/dates.test.ts`,
 `src/lib/csv-import.test.ts`, `src/hooks/use-patterns.test.ts`.
+
+Note: `CHANGELOG.md` still shows `[Unreleased]` for the v1.0.0 release — flagged for manual
+review below (not an editable file for this pass).
+
+No changes made to editable docs.
 
 ---
 
 ### 3. Stack
 
-**Status: drifted → fixed**
+**Status: consistent**
 **Evidence basis: verified-by-reading-code**
 
-`CLAUDE.md` Tech Stack table and the portfolio-context Stack section both had two wrong versions:
+All stack versions in `CLAUDE.md` match `package.json`:
 
-| Claim | Doc said | `package.json` says | Fix |
+| Stack entry | Doc claims | package.json | Status |
 |---|---|---|---|
-| React | 18 | `"react": "^19"` | Updated both occurrences to `React: 19` |
-| Tailwind CSS | 3.x | `"tailwindcss": "^4"`, `"@tailwindcss/vite": "^4"` | Updated both occurrences to `Tailwind CSS: 4.x` |
+| Tauri | 2.0 | `@tauri-apps/cli: "^2"`, `tauri = "2"` in Cargo.toml | consistent |
+| React | 19 | `"react": "^19"` | consistent |
+| TypeScript | 5.x | `"typescript": "~5.8"` | consistent |
+| SQLite | via @tauri-apps/plugin-sql | `"@tauri-apps/plugin-sql": "^2"` | consistent |
+| Recharts | 2.x | `"recharts": "^2"` | consistent |
+| Tailwind CSS | 4.x | `"tailwindcss": "^4"` | consistent |
 
-Remaining stack entries (`Tauri 2.0`, `TypeScript 5.x`, `SQLite via @tauri-apps/plugin-sql`,
-`Recharts 2.x`) are consistent with `src-tauri/Cargo.toml` and `package.json`.
+No changes made.
 
 ---
 
@@ -80,11 +76,14 @@ Remaining stack entries (`Tauri 2.0`, `TypeScript 5.x`, `SQLite via @tauri-apps/
 **Status: consistent**
 **Evidence basis: verified-by-reading-code**
 
-`CLAUDE.md` documents `npm install` (deps) and `npm run dev` (local dev).
-`package.json` scripts confirm: `"dev": "vite"`, `"build": "tsc && vite build"`,
-`"tauri": "tauri"`, `"test": "vitest run"`. All documented commands are defined.
-README.md does not document run commands (it has no "How to run" section) — acceptable for a
-personal-use app with no public contributor audience. No change made.
+`CLAUDE.md` documents `npm install` and `npm run dev`. Both commands are confirmed in
+`package.json` scripts (`"dev": "vite"`). Additional scripts present but not required to
+document: `build`, `preview`, `tauri`, `test`, `test:watch`.
+
+`Makefile` exists but is a stub (all targets print "No build step configured" / "No tests
+configured"). Neither README nor CLAUDE.md references the Makefile — no contradiction.
+
+No changes made.
 
 ---
 
@@ -93,75 +92,108 @@ personal-use app with no public contributor audience. No change made.
 **Status: consistent**
 **Evidence basis: verified-by-reading-code**
 
-`CLAUDE.md` "Do NOT" rules are all consistent with the code:
-- No network calls: `tauri.conf.json` has CSP `connect-src 'self' ipc: http://ipc.localhost` —
-  no external URLs. `src-tauri/src/lib.rs` uses no HTTP client.
-- SQL in components: confirmed all DB calls go through `src/lib/db.ts`.
+All "Do NOT" constraints in `CLAUDE.md` are honoured by the code:
+- No network calls: `src-tauri/src/lib.rs` uses only `tauri_plugin_sql`, `tauri_plugin_notification`,
+  and `tauri_plugin_opener`; no HTTP client. No `fetch`/`axios`/XHR in frontend code.
+- SQL in components: all DB calls route through `src/lib/db.ts` — confirmed by inspecting every
+  hook and component import chain.
 - Class components: confirmed hooks-only throughout `src/components/`.
-- v2 features (Claude API, iCloud, CSV export) are absent from the codebase as specified.
+- v2 features (Claude API, iCloud, CSV export, project tagging): absent from codebase.
+
+No changes made.
 
 ---
 
 ### 6. Next move
 
-**Status: consistent (for the editable docs)**
-**Evidence basis: verified-by-reading-code**
+**Status: unverifiable**
+**Evidence basis: unverifiable-because-forward-looking**
 
-After the fixes above, README.md and CLAUDE.md accurately describe a shipped v1.0.0. No
-roadmap gaps remain undocumented in the editable files. The `[Unreleased]` entry in
-`CHANGELOG.md` is technically stale (v1.0.0 shipped) but `CHANGELOG.md` is not in the editable
-file set for this pass; see "Contradictions for Manual Review" below.
+`CLAUDE.md` Portfolio Context "Next Recommended Move" says "resume the next active task, then
+promote the repo beyond minimum-viable by capturing a dedicated handoff, roadmap, or discovery
+artifact." Code cannot confirm or deny what work is "next" — this is an advisory statement.
+`docs/PORTFOLIO-DISPOSITION.md` exists as one such artifact, which partially fulfils the
+recommendation. No change made.
 
 ---
 
 ## Contradictions for Manual Review
 
-The following files contain drift but are outside the editable set (`README.md`, `CLAUDE.md`,
-`AGENTS.md`, `DOC-RECONCILIATION.md`, `docs/`). A human should apply these corrections.
+The following files contain drift but are outside the editable set for this pass
+(`README.md`, `CLAUDE.md`, `AGENTS.md`, `DOC-RECONCILIATION.md`, `docs/`), or are historical
+analysis documents where editing would destroy context. A human should apply these corrections.
 
-### `IMPLEMENTATION-ROADMAP.md` — File structure diagram
+### `IMPLEMENTATION-ROADMAP.md` — Hook file names (lines 35–37)
 
-**Path:** `IMPLEMENTATION-ROADMAP.md` lines 18–56 (file structure block)
-
-**What is wrong:** The diagram shows `migrations/001_initial.sql` at the repo root:
+**What is wrong:** The file-structure diagram shows hook files in camelCase:
 ```
-├── migrations/
-│   └── 001_initial.sql
+│   ├── useCheckins.ts
+│   ├── useHabits.ts
+│   └── usePatterns.ts
 ```
+**Actual files:** `src/hooks/use-checkins.ts`, `src/hooks/use-habits.ts`, `src/hooks/use-patterns.ts`
+(kebab-case, consistent with `CLAUDE.md`'s "File naming: kebab-case for files" rule).
+
+**One-line fix:** Rename the three hook entries in the file-structure diagram to kebab-case.
+
+---
+
+### `IMPLEMENTATION-ROADMAP.md` — App.tsx tab list (line 43)
+
+**What is wrong:** Comment says `# Root: tab navigation (Check-in / Dashboard / Settings)`.
+**Actual:** `src/App.tsx` defines 4 tabs — `checkin`, `dashboard`, `history`, `settings` — with
+labels "Check-in / Patterns / History / Settings". The second tab is labeled "Patterns" (not
+"Dashboard") and there is a fourth "History" tab.
+
+**One-line fix:** Update comment to `# Root: tab navigation (Check-in / Patterns / History / Settings)`.
+
+---
+
+### `IMPLEMENTATION-ROADMAP.md` — Migrations path (line 51)
+
+**What is wrong:** File-structure diagram shows `migrations/001_initial.sql` at repo root.
 **Actual path:** `database/migrations/001_initial.sql`
-(confirmed by `src-tauri/src/lib.rs:8`: `include_str!("../../database/migrations/001_initial.sql")`)
+(confirmed by `src-tauri/src/lib.rs:8`: `include_str!("../../database/migrations/001_initial.sql")`).
 
-**One-line fix:** In the file structure diagram, change `migrations/` to `database/migrations/`.
+**One-line fix:** Change `migrations/` to `database/migrations/` in the diagram.
 
 ---
 
-### `IMPLEMENTATION-ROADMAP.md` — ID generation library
+### `IMPLEMENTATION-ROADMAP.md` — ID generation library (lines 167, 250)
 
-**Path:** `IMPLEMENTATION-ROADMAP.md` line 167 (Dependencies section), line 250 (Phase 0 task 3)
-
-**What is wrong:** The roadmap specifies `nanoid` for ID generation
+**What is wrong:** Roadmap specifies `nanoid` for ID generation
 (`npm install recharts tailwindcss autoprefixer postcss nanoid`).
-**Actual implementation:** `crypto.randomUUID()` is used throughout `src/lib/db.ts` — `nanoid`
-is not installed and not in `package.json`.
+**Actual:** `crypto.randomUUID()` is used throughout `src/lib/db.ts`; `nanoid` is not in
+`package.json`.
 
-**One-line fix:** Remove `nanoid` from the install command; note in the text that IDs use
-`crypto.randomUUID()`.
+**One-line fix:** Remove `nanoid` from the install command; note IDs use `crypto.randomUUID()`.
 
 ---
 
-### `CHANGELOG.md` — Unreleased section
-
-**Path:** `CHANGELOG.md` line 7
+### `CHANGELOG.md` — Unreleased section (line 7)
 
 **What is wrong:** Only entry is `[Unreleased] — Initial release`. The app is at v1.0.0
-(`package.json`, `tauri.conf.json`, `Cargo.toml` all confirm).
+(`package.json`, `Cargo.toml` both confirm).
 
 **One-line fix:** Rename `[Unreleased]` to `[1.0.0]` and add a release date.
 
 ---
 
+### `docs/PORTFOLIO-DISPOSITION.md` — Stale-badge finding and HEAD reference
+
+**What is wrong:** The document notes "README 'early_development' badge is **stale**" and lists
+the `origin/main` tip as `4f47369`. The README badge was corrected in the prior reconciliation
+pass (`72ac7cc`) and the current HEAD is `3229f6f`.
+
+**Note:** This document is a historical analysis artifact. The stale-badge language documents
+a past cluster-wide pattern; editing it would erase that context. A human should decide whether
+to append a note like "Badge corrected as of `72ac7cc`" rather than rewriting the original
+analysis.
+
+---
+
 ## Footer
 
-**Timestamp:** 2026-05-30 22:39:47 PDT
-**Branch:** `docs/truth-up-2026-05-30`
-**HEAD sha reconciled against:** `9af0e129a890c3c93a002935c59d8f435b0b9f26`
+**Timestamp:** 2026-06-02 19:49:06 PDT
+**Branch:** `docs/truth-up-2026-06-02`
+**HEAD sha reconciled against:** `3229f6f8ff7d712981524a2821f13c1b50135128`
