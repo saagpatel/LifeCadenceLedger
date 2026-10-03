@@ -4,19 +4,28 @@ Local-first macOS desktop app tracking daily energy, focus, habits, and sleep �
 
 ## Stack
 
-- **Tauri 2.0** — macOS desktop shell, system notifications, SQLite plugin
+- **Tauri 2.x** — macOS desktop shell, system notifications, SQLite plugin
 - **React 19** — UI framework (hooks only, no class components)
-- **TypeScript 5.x** (strict mode)
+- **TypeScript 7.0.x** (strict mode)
 - **SQLite** via `@tauri-apps/plugin-sql` — local-first persistence
-- **Recharts 2.x** — trend and correlation charts
+- **Recharts 3.x** — trend and correlation charts
 - **Tailwind CSS 4.x** — styling
 
 ## Build / Test / Run
 
 ```bash
-npm install          # install dependencies
-npm run dev          # start local development
+npm ci               # install locked dependencies
+npm test             # run all configured Vitest tests
+npm run build        # TypeScript check and Vite bundle
+npm run dev          # frontend browser development
+npm run tauri dev    # native desktop development
 ```
+
+Use npm with `package-lock.json`. See README.md for Node.js requirements,
+native prerequisites, and the separate Cargo check. `make build` and `make test`
+wrap the npm scripts; no JavaScript lint/format script is configured. Native
+development stores app data and may schedule reminders; use the README's
+disposable-profile and synthetic-data precautions.
 
 ## Architecture
 
@@ -51,17 +60,17 @@ See IMPLEMENTATION-ROADMAP.md for full phase details and acceptance criteria.
 
 ## Stack
 
-- **Tauri**: 2.0 — macOS desktop shell, system notifications, SQLite plugin
+- **Tauri**: 2.x — macOS desktop shell, system notifications, SQLite plugin
 - **React**: 19 — UI framework
-- **TypeScript**: 5.x (strict mode)
+- **TypeScript**: 7.0.x (strict mode)
 - **SQLite**: via `@tauri-apps/plugin-sql` — local-first persistence
-- **Recharts**: 2.x — trend and correlation charts
+- **Recharts**: 3.x — trend and correlation charts
 - **Tailwind CSS**: 4.x — styling
 
 ## How To Run
 
-- Install dependencies with `npm install`.
-- Start local development with `npm run dev`.
+- Install locked dependencies with `npm ci`.
+- Start frontend browser development with `npm run dev`; use `npm run tauri dev` for the native app with the README's data/reminder precautions.
 - Review the repo README for any required verification commands before shipping.
 
 ## Known Risks
