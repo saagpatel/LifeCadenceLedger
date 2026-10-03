@@ -23,7 +23,7 @@ and Tailwind CSS 4.x, with SQLite via `@tauri-apps/plugin-sql` 2.5.0.
 `package-lock.json` and `src-tauri/Cargo.lock` record resolved versions.
 
 From the repository root, use npm with `package-lock.json` and Node.js
-20.19+ within 20.x, 22.13+ within 22.x, 24.x, or 26.x. These ranges satisfy
+22.13+ within 22.x, 24.x, or 26.x. These ranges satisfy
 the locked Vite, Vitest, jsdom, and better-sqlite3 engines; “22.13+” alone
 would also include unsupported odd-numbered releases. Native desktop work also needs Rust stable and macOS
 developer tools. Install the checked-in npm dependencies, then run the local
