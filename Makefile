@@ -1,10 +1,10 @@
 .PHONY: build test clean
 
 build:
-	@echo "No build step configured"
+	npm run build
 
 test:
-	@echo "No tests configured"
+	npm test
 
 clean:
 	@echo "Nothing to clean"

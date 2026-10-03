@@ -15,6 +15,35 @@ LifeCadenceLedger tracks recurring commitments — the cadence layer that sits b
 - CSV import from a prior manual log
 - Local-first — no accounts, no cloud required
 
+## Development and verification
+
+From the repository root, use Node.js 20.19+ or 22.13+ and npm (satisfying both
+the locked Vite and jsdom engines, including the broader test lane). Native desktop work also needs Rust stable and macOS
+developer tools. Install the checked-in npm dependencies, then run the local
+gates before opening the app:
+
+```bash
+npm ci
+npm test -- src/lib/dates.test.ts src/lib/csv-import.test.ts  # focused pure fixtures
+npm test                            # all configured Vitest tests
+npm run build                       # TypeScript check and Vite bundle
+cargo check --locked --manifest-path src-tauri/Cargo.toml
+```
+
+`make build` and `make test` wrap the actual npm scripts. The broader Vitest
+lane uses jsdom and Testing Library; native optional dependencies such as canvas
+may need their platform build prerequisites if a prebuilt binary is unavailable.
+Tests use synthetic inputs; they do not launch the Tauri app. No separate
+JavaScript lint/format script is configured. The current CodeQL workflow is
+static analysis, not proof that build or tests ran.
+
+Use `npm run dev` for frontend browser checks. Use `npm run tauri dev` for the
+native app, in a disposable macOS user profile with synthetic check-ins/habits:
+it stores SQLite in the application data directory and may schedule reminders.
+For UI/chart changes, check the affected empty/populated states in the browser;
+for SQL/notification changes, native verification is separate. Do not import
+personal logs, replace the existing ledger, or trigger reminders as routine tests.
+
 ## License
 
 MIT
