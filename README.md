@@ -17,8 +17,8 @@ LifeCadenceLedger tracks recurring commitments — the cadence layer that sits b
 
 ## Development and verification
 
-From the repository root, use Node.js 20.19+ or 22.12+ and npm (matching the
-locked Vite engine). Native desktop work also needs Rust stable and macOS
+From the repository root, use Node.js 20.19+ or 22.13+ and npm (satisfying both
+the locked Vite and jsdom engines, including the broader test lane). Native desktop work also needs Rust stable and macOS
 developer tools. Install the checked-in npm dependencies, then run the local
 gates before opening the app:
 
