@@ -48,7 +48,7 @@ export function EnergyFocusTrend({ data }: Props) {
 				/>
 				<Tooltip
 					content={({ payload, label }) => {
-						if (!payload?.length) return null;
+						if (!payload?.length || typeof label !== "string") return null;
 						return (
 							<div
 								className="rounded-lg px-3 py-2 text-xs"
