@@ -32,7 +32,7 @@
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"@vitejs/plugin-react": "^6",
-		"better-sqlite3": "12.11.1",
+		"better-sqlite3": "13.0.3",
 		"canvas": "3.2.3",
 		"jsdom": "^29",
 		"typescript": "~7.0",
