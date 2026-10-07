@@ -17,7 +17,7 @@
 		"@tauri-apps/api": "2.12.1",
 		"@tauri-apps/plugin-notification": "2.5.1",
 		"@tauri-apps/plugin-sql": "2.5.0",
-		"papaparse": "5.5.4",
+		"papaparse": "5.7.0",
 		"react": "^19",
 		"react-dom": "^19",
 		"recharts": "^3",
